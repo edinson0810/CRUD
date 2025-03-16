@@ -3,6 +3,20 @@
       {
         "id" : 1,
         "nombre" : "Bucaramanga"
-      }  
+      }, 
+      {
+        "id" : 2,
+        "nombre" : "Floridablanca"
+      }
+    ],
+    "tipo": [
+      {
+        "id" : 1,
+        "nombre" : "Cedula"
+      },
+      {
+         "id" : 1,
+        "nombre" : "Pasaporte"
+      }
     ]
 }
