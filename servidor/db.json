@@ -1,0 +1,8 @@
+{
+    "ciudades":[
+      {
+        "id" : 1,
+        "nombre" : "Bucaramanga"
+      }  
+    ]
+}
