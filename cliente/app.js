@@ -23,7 +23,19 @@ ciudades.forEach(({id, nombre}) => {
 
 elemento.append(fragmento);
  }
-
+const llenadoDocumento = (documentos, elemento) => {
+    const fragmento = document.createDocumentFragment();
+    const option = document.createElement("option");
+    option.textContent = "seleccione...";
+    fragmento.append(option);
+    documentos.forEach(({id, nombre}) => {
+        const option =document.createElement("option");
+        option.textContent = nombre;
+        option.value = id;
+        fragmento.append(option);
+    })
+    elemento.append(fragmento);
+}
 
 
  
