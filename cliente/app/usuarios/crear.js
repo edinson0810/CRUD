@@ -1,6 +1,6 @@
 const insertar = (datos)=>{
 
-    fetch('http://localhost:3000/usuarios', {
+    fetch('http://localhost:3000/usuario', {
    method: 'POST',
    body: JSON.stringify(datos),
    headers: {

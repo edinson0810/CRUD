@@ -1,10 +1,29 @@
 import listar from "./app/ciudades/listar.js";
 import llenadoDocumento from "./app/ciudades/listarDocumento.js";
 import insertar from "./app/usuarios/crear.js";
+import { tipo } from "./app/ciudades/listar.js";
+import { get_Usuario } from "./app/usuarios/listar.js";
 
-const ciudad = document.querySelector("#ciudad");
+
+
+
+
+
+const nombre = document.querySelector("#nombre");
+const apellidos = document.querySelector("#apellidos");
+const telefono = document.querySelector("#telefono");
+const direccion = document.querySelector("#direccion");
+const ciudad = document.querySelector("#ciudades");
+const tipo_documento = document.querySelector("#tipo");
+const documento = document.querySelector("#documento");
+const email = document.querySelector("#email");
+const politicas = document.querySelector("#politicas");
+
+
+
+
 const ciudades = await listar();
-const documentos = await llenadoDocumento();
+const tipo_documentos = await llenadoDocumento();
 
 // listar ciudades
 const llenadoCiudad = (ciudades,elemento) => {
@@ -21,22 +40,27 @@ const llenadoCiudad = (ciudades,elemento) => {
     elemento.append(fragmento);
 }
 
+
 // listar documentos
-const llenadoDocumentos = (documentos, elemento)=>{
+const llenadoDocumentos = (documento, elemento)=>{
     const fragmento = document.createDocumentFragment();
     const option = document.createElement("option");
     option.textContent = "Seleccione documento...";
     fragmento.append(option);
-    documentos.forEach(({id, nombre}) =>{
+    documento.forEach(({id, nombre}) =>{
         const option = document.createElement("option");
         option.textContent = nombre;
         option.value = id;
         fragmento.append(option);
     })
-    elemento.append(option);
+    elemento.append(fragmento);
 }
 
-// const validarFormulario = () => {
+
+const btn = document.querySelector('form');
+const guardarUsuario = (event) => {
+    event.preventDefault()
+    // const validarFormulario = () => {
 //     let esValido = true;
 //     const campos = [
 //         { campo: nombre, mensaje: "El nombre es obligatorio" },
@@ -58,7 +82,7 @@ const llenadoDocumentos = (documentos, elemento)=>{
 //     });
 
 //     // Validar selects
-//     if (ciudad.value === "") {
+//     if (ciudades.value === "") {
 //         alert("Debe seleccionar una ciudad");
 //         ciudad.focus();
 //         esValido = false;
@@ -72,8 +96,6 @@ const llenadoDocumentos = (documentos, elemento)=>{
 //     return esValido;
 // };
 
-const btn = document.querySelector('button[type="submit"]');
-const guardarUsuario = () => {
     const data = {
         nombre: nombre.value,
         apellidos: apellidos.value,
@@ -85,9 +107,10 @@ const guardarUsuario = () => {
         email: email.value
     }
     insertar(data)
+    
 }
 
 llenadoCiudad(ciudades, ciudad);
-llenadoDocumentos(documentos, documento);
+llenadoDocumentos(tipo_documentos, tipo_documento);
 
-btn.addEventListener("submit", guardarUsuario);
+btn.addEventListener("submit", guardarUsuario)
