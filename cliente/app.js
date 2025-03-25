@@ -58,8 +58,22 @@ const llenadoDocumentos = (documento, elemento)=>{
 
 
 const btn = document.querySelector('form');
-const guardarUsuario = (event) => {
+const guardarUsuario = (event, formularioId) => {
     event.preventDefault()
+
+    const form = document.querySelector(formularioId); // Obtiene el formulario correctamente
+    
+    if (!form) {
+        console.error("Formulario no encontrado:", formularioId);
+        return;
+    }
+
+ if (nombre.value == "") {
+            alert("El nombre es obligatorio");
+            nombre.focus();
+            return;
+        }
+        
     const validarFormulario = () => {
         let esValido = true;
     
@@ -193,7 +207,7 @@ btn.addEventListener("submit", guardarUsuario)
 //     elemento.append(fragmento);
 // };
 
-// // Validación del formulario
+// // Validacion del formulario
 // const validarFormulario = () => {
 //     const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
 //     const soloNumeros = /^[0-9]+$/;
@@ -233,9 +247,9 @@ btn.addEventListener("submit", guardarUsuario)
 //         return false;
 //     }
 
-//     // Validar checkbox de políticas
+//     // Validar checkbox de politicas
 //     if (!politicas.checked) {
-//         alert("Debe aceptar las políticas de privacidad");
+//         alert("Debe aceptar las politicas de privacidad");
 //         politicas.focus();
 //         return false;
 //     }
